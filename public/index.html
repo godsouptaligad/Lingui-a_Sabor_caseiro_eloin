@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa da Carne — Cortes Caseiros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== CABEÇALHO ===== -->
+<header class="topo" id="topo">
+  <a class="logo" href="#" onclick="return false">
+    <span class="fogo">🔥</span>
+    <span class="nome">LINGUIÇA SABOR CASEIRO <b>ELOIN</b></span>
+  </a>
+  <nav class="menu">
+    <a href="#cortes">Cortes</a>
+    <a href="#como" class="some-cel">Como funciona</a>
+    <a href="#" onclick="abrirBolsa();return false">Minha bolsa</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="brasas" id="brasas"></div>
+    <span class="flut f1" data-prof="18">🥩</span>
+    <span class="flut f2" data-prof="30">🍖</span>
+    <span class="flut f3" data-prof="24">🥓</span>
+    <span class="flut f4" data-prof="14">🍗</span>
+
+    <div class="hero-inner">
+      <p class="selo">carnes caseiras selecionadas</p>
+      <h1>
+        <span class="lin"><span style="--d:.05s">DO NOSSO</span></span>
+        <span class="lin"><span style="--d:.18s">CORTE PRA</span></span>
+        <span class="lin"><span class="brasa-txt" style="--d:.32s">SUA BRASA</span></span>
+      </h1>
+      <p class="hero-sub">Escolha seus cortes favoritos, monte sua bolsa e envie o pedido em segundos — sem cadastro, sem complicação. A gente recebe na hora e prepara com capricho.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-fogo" href="#cortes">🥩 Ver os cortes</a>
+        <a class="btn btn-contorno" href="#como">Como funciona</a>
+      </div>
+    </div>
+
+    <div class="rolar">role</div>
+
+    <div class="letreiro">
+      <div class="trilho" id="trilho"></div>
+    </div>
+  </section>
+
+  <!-- ===== COMO FUNCIONA ===== -->
+  <section class="bloco" id="como">
+    <div class="cabecalho-sec" data-reveal>
+      <div>
+        <span class="rotulo">simples assim</span>
+        <h2>Pedir é <i>rapidinho</i></h2>
+      </div>
+    </div>
+    <div class="passos">
+      <div class="passo" data-reveal>
+        <span class="ico">🥩</span>
+        <div class="num">01</div>
+        <h3>Escolha os cortes</h3>
+        <p>Navegue pelo catálogo, veja fotos, descrições e preços de cada corte.</p>
+      </div>
+      <div class="passo" data-reveal style="transition-delay:.1s">
+        <span class="ico">🛍️</span>
+        <div class="num">02</div>
+        <h3>Monte sua bolsa</h3>
+        <p>Adicione as quantidades que quiser. Sua bolsa fica salva mesmo se você sair do site.</p>
+      </div>
+      <div class="passo" data-reveal style="transition-delay:.2s">
+        <span class="ico">🔔</span>
+        <div class="num">03</div>
+        <h3>Envie o pedido</h3>
+        <p>Informe seu nome e telefone. O pedido chega na hora pra gente e já começamos a preparar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATÁLOGO ===== -->
+  <section class="bloco" id="cortes">
+    <div class="cabecalho-sec" data-reveal>
+      <div>
+        <span class="rotulo">direto da nossa cozinha</span>
+        <h2>Escolha seus <i>cortes</i></h2>
+      </div>
+    </div>
+
+    <div class="busca-linha" data-reveal>
+      <div class="busca">
+        <span>🔎</span>
+        <input id="campoBusca" type="text" placeholder="Buscar corte... (ex: picanha, linguiça)" aria-label="Buscar produto">
+      </div>
+    </div>
+    <div class="chips" id="chips" data-reveal></div>
+
+    <div class="grade" id="grade" aria-live="polite">
+      <div class="sk"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
+      <div class="sk"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
+      <div class="sk"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
+      <div class="sk"><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div></div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== RODAPÉ ===== -->
+<footer class="pe">
+  <div>
+    <div class="marca">🔥 CASA DA CARNE</div>
+    <div>Carnes caseiras, feitas com capricho.</div>
+  </div>
+  <div id="peContato"></div>
+  <button class="link-dono" id="linkDono">🔒 Área do dono</button>
+</footer>
+
+<!-- ===== BOLSA (FAB + GAVETA) ===== -->
+<button class="bolsa-fab" id="bolsaFab" onclick="abrirBolsa()" aria-label="Abrir minha bolsa">
+  <span class="icone">🛍️</span><span class="txt">Minha bolsa</span><span class="cont" id="bolsaCont">0</span>
+</button>
+
+<div class="veu" id="veu" onclick="fecharTudo()"></div>
+
+<aside class="gaveta" id="gaveta" aria-label="Minha bolsa">
+  <div class="gaveta-cab">
+    <h3>🛍️ Minha bolsa</h3>
+    <button class="fechar-x" onclick="fecharTudo()" aria-label="Fechar">✕</button>
+  </div>
+  <div class="gaveta-corpo" id="bolsaItens"></div>
+  <div class="gaveta-pe" id="gavetaPe">
+    <div class="subtotal-lin">
+      <span class="rt">Subtotal</span>
+      <span class="vl" id="bolsaTotal">R$ 0,00</span>
+    </div>
+    <button class="btn btn-fogo" id="btnFechar" onclick="abrirCheckout()">Fechar pedido →</button>
+  </div>
+</aside>
+
+<!-- ===== CHECKOUT ===== -->
+<div class="modal" id="modalCheckout">
+  <div class="modal-caixa">
+    <div class="modal-cab">
+      <div>
+        <h3>Fechar pedido</h3>
+        <p class="sub">A gente recebe seu pedido na hora 🔔</p>
+      </div>
+      <button class="fechar-x" onclick="fecharModal('modalCheckout')" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-corpo">
+      <div class="resumo-pill"><span id="resumoItens">0 itens</span><b id="resumoTotal">R$ 0,00</b></div>
+      <div class="campo" id="cNome">
+        <label for="pedNome">Seu nome</label>
+        <input id="pedNome" type="text" placeholder="Como podemos te chamar?" maxlength="60">
+      </div>
+      <div class="campo" id="cFone">
+        <label for="pedFone">WhatsApp / Telefone</label>
+        <input id="pedFone" type="tel" placeholder="(00) 00000-0000" inputmode="tel" maxlength="16">
+        <div class="dica">Usamos só para combinar seu pedido.</div>
+      </div>
+      <div class="campo">
+        <label>Como você prefere?</label>
+        <div class="radios">
+          <label><input type="radio" name="entrega" value="retirada" checked>🏠 Retirada</label>
+          <label><input type="radio" name="entrega" value="entrega">🛵 Entrega</label>
+        </div>
+      </div>
+      <div class="campo" id="cEnd" style="display:none">
+        <label for="pedEnd">Endereço de entrega</label>
+        <textarea id="pedEnd" placeholder="Rua, número, bairro e ponto de referência"></textarea>
+      </div>
+      <div class="campo">
+        <label for="pedObs">Observações (opcional)</label>
+        <textarea id="pedObs" placeholder="Ex: cortar a picanha em bifes, sem gordura..."></textarea>
+      </div>
+      <div class="msg-erro" id="erroCheckout"></div>
+      <button class="btn btn-fogo" style="width:100%" id="btnEnviar" onclick="enviarPedido()">🔥 Enviar pedido</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SUCESSO ===== -->
+<div class="sucesso" id="telaSucesso">
+  <div class="sucesso-inner">
+    <svg class="circ-check" viewBox="0 0 110 110">
+      <circle cx="55" cy="55" r="49"></circle>
+      <path d="M34 57 L49 71 L78 41"></path>
+    </svg>
+    <h2>Pedido enviado!</h2>
+    <div class="cod" id="sucCod">#PD-0000</div>
+    <p><b id="sucNome"></b>, seu pedido já apareceu no nosso painel e vamos preparar tudo com capricho. Qualquer coisa, chamamos você no telefone informado. 🤝</p>
+    <div class="acoes">
+      <a class="btn btn-nata" id="btnZap" href="#" target="_blank" rel="noopener" style="display:none">💬 Avisar no WhatsApp também</a>
+      <button class="btn btn-contorno" onclick="voltarLoja()">← Voltar para a loja</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ÁREA DO DONO ===== -->
+<div class="painel" id="painelDono">
+  <div class="painel-topo">
+    <h2><span class="pt">🔒</span> ÁREA DO DONO</h2>
+    <div style="display:flex;gap:10px;align-items:center">
+      <span class="confiavel-tag" id="tagConfiavel" style="display:none">✓ dispositivo confiável</span>
+      <button class="btn btn-contorno btn-mini" onclick="fecharPainel()">← Voltar à loja</button>
+    </div>
+  </div>
+
+  <div class="painel-corpo">
+    <!-- 1ª vez: criar senha -->
+    <div class="auth-caixa" id="authCriar" style="display:none">
+      <span class="cadeado">🛡️</span>
+      <h3>Proteja sua loja</h3>
+      <p class="sub">É a sua primeira vez aqui. Crie uma senha de administrador — só quem tiver essa senha (ou um dispositivo marcado como confiável) poderá gerenciar produtos e pedidos.</p>
+      <div class="campo">
+        <label for="novaSenha">Senha do administrador</label>
+        <input id="novaSenha" type="password" placeholder="Mínimo de 6 caracteres" autocomplete="new-password">
+      </div>
+      <div class="campo">
+        <label for="novaSenha2">Confirme a senha</label>
+        <input id="novaSenha2" type="password" placeholder="Repita a senha" autocomplete="new-password">
+      </div>
+      <div class="msg-erro" id="erroCriar"></div>
+      <button class="btn btn-fogo" style="width:100%" onclick="criarSenha()">Criar senha e entrar</button>
+      <div class="aviso-seg">🔐 A senha é guardada apenas como um código embaralhado (hash) — nunca em texto puro. Este dispositivo será marcado como confiável automaticamente.</div>
+    </div>
+
+    <!-- login -->
+    <div class="auth-caixa" id="authEntrar" style="display:none">
+      <span class="cadeado">🔒</span>
+      <h3>Só para o dono</h3>
+      <p class="sub">Digite a senha de administrador para gerenciar a loja.</p>
+      <div class="campo">
+        <label for="senhaEntrar">Senha</label>
+        <input id="senhaEntrar" type="password" placeholder="Sua senha de administrador" autocomplete="current-password">
+      </div>
+      <label class="check-lin" style="margin-bottom:16px"><input type="checkbox" id="confiarDisp" checked> Confiar neste dispositivo (não pedir senha de novo aqui)</label>
+      <div class="msg-erro" id="erroEntrar"></div>
+      <button class="btn btn-fogo" style="width:100%" onclick="entrarAdmin()">Entrar</button>
+    </div>
+
+    <!-- painel autenticado -->
+    <div id="adminApp" style="display:none">
+      <div class="abas">
+        <button class="aba ativa" data-aba="pedidos" onclick="trocarAba('pedidos')">🔔 Pedidos <span class="badge" id="badgePedidos">0</span></button>
+        <button class="aba" data-aba="produtos" onclick="trocarAba('produtos')">🥩 Produtos</button>
+        <button class="aba" data-aba="config" onclick="trocarAba('config')">⚙️ Configurações</button>
+      </div>
+
+      <div id="abaPedidos">
+        <div id="listaPedidos"></div>
+      </div>
+
+      <div id="abaProdutos" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px">
+          <button class="btn btn-fogo" onclick="novoProduto()">＋ Novo produto</button>
+          <button class="btn btn-fantasma" id="btnLimparDemo" style="display:none" onclick="removerDemos()">Remover produtos de demonstração</button>
+        </div>
+        <div id="listaAdmProdutos"></div>
+      </div>
+
+      <div id="abaConfig" style="display:none">
+        <div style="max-width:460px">
+          <div class="campo">
+            <label for="cfgZap">Seu WhatsApp (com DDD)</label>
+            <input id="cfgZap" type="tel" placeholder="(00) 00000-0000" inputmode="tel" maxlength="16">
+            <div class="dica">Depois de enviar o pedido, o cliente vê um botão para também te avisar direto no WhatsApp.</div>
+          </div>
+          <button class="btn btn-nata btn-mini" onclick="salvarZap()">Salvar WhatsApp</button>
+          <hr style="border:none;border-top:1px solid var(--linha);margin:26px 0">
+          <h3 style="font-family:var(--font-d);font-weight:400;font-size:1.4rem;letter-spacing:.05em;margin-bottom:12px">TROCAR SENHA</h3>
+          <div class="campo"><label for="cfgSenhaAtual">Senha atual</label><input id="cfgSenhaAtual" type="password" autocomplete="current-password"></div>
+          <div class="campo"><label for="cfgSenhaNova">Nova senha</label><input id="cfgSenhaNova" type="password" placeholder="Mínimo de 6 caracteres" autocomplete="new-password"></div>
+          <div class="msg-erro" id="erroTroca"></div>
+          <button class="btn btn-contorno btn-mini" onclick="trocarSenha()">Trocar senha</button>
+          <div class="dica" style="margin-top:8px">Ao trocar a senha, todos os outros dispositivos confiáveis são desconectados.</div>
+          <hr style="border:none;border-top:1px solid var(--linha);margin:26px 0">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-perigo btn-mini" onclick="revogarConfianca()">Deixar de confiar neste dispositivo</button>
+            <button class="btn btn-fantasma" onclick="sairAdmin()">Sair da área do dono</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL DE PRODUTO (admin) ===== -->
+<div class="modal" id="modalProduto" style="z-index:110">
+  <div class="modal-caixa">
+    <div class="modal-cab">
+      <h3 id="tituloProduto">Novo produto</h3>
+      <button class="fechar-x" onclick="fecharModal('modalProduto')" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-corpo">
+      <input type="hidden" id="prId">
+      <div class="campo">
+        <label for="prNome">Nome do corte</label>
+        <input id="prNome" type="text" placeholder="Ex: Picanha Premium" maxlength="50">
+      </div>
+      <div class="duas-col">
+        <div class="campo">
+          <label for="prPreco">Preço (R$)</label>
+          <input id="prPreco" type="text" placeholder="Ex: 79,90" inputmode="decimal">
+        </div>
+        <div class="campo">
+          <label for="prUnidade">Vendido por</label>
+          <select id="prUnidade">
+            <option value="kg">kg</option>
+            <option value="500g">500 g</option>
+            <option value="unidade">unidade</option>
+            <option value="pacote">pacote</option>
+            <option value="bandeja">bandeja</option>
+            <option value="kit">kit</option>
+          </select>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="prCat">Categoria</label>
+        <select id="prCat"></select>
+      </div>
+      <div class="campo">
+        <label for="prDesc">Descrição</label>
+        <textarea id="prDesc" placeholder="Ex: Corte macio e suculento, ideal para churrasco." maxlength="180"></textarea>
+      </div>
+      <div class="campo">
+        <label>Foto do produto</label>
+        <div class="up-foto" id="upFoto" onclick="document.getElementById('prArquivo').click()">
+          <div id="upPreview">📷 Toque para enviar uma foto<br><small>ou escolha um emoji abaixo</small></div>
+        </div>
+        <input id="prArquivo" type="file" accept="image/*" style="display:none">
+        <div class="emoji-rapidos" id="emojiRapidos"></div>
+      </div>
+      <label class="check-lin" style="margin-bottom:16px"><input type="checkbox" id="prAtivo" checked> Produto visível na loja</label>
+      <div class="msg-erro" id="erroProduto"></div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-fogo" style="flex:1" onclick="salvarProduto()">Salvar produto</button>
+        <button class="btn btn-perigo" id="btnExcluir" style="display:none" onclick="excluirProduto()">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span id="toastIco">✓</span><span id="toastTxt"></span></div>
+
+<script src="js/constants.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/loja.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/efeitos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
